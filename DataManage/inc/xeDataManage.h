@@ -1,4 +1,0 @@
-#ifndef _INC_XE_DATA_MANAGE_H_
-#define _INC_XE_DATA_MANAGE_H_
-
-#endif // _INC_XE_DATA_MANAGE_H_ IS EOF

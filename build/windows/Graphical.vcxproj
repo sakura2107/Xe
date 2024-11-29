@@ -18,10 +18,18 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Graphical\inc\Render\xeRender.h" />
+    <ClInclude Include="..\..\Graphical\inc\xeWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Graphical\src\Render\xeRender.cpp" />
+    <ClCompile Include="..\..\Graphical\src\xeWindow.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2F83EAC3-D1AC-4676-8A06-FFE4A6FEE176}</ProjectGuid>
+    <ProjectGuid>{0B5D15D2-0DCF-477C-8604-A2D570FEAC7E}</ProjectGuid>
     <RootNamespace>XE</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -40,15 +48,15 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -71,18 +79,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)..\..\XeCore\inc\;$(ProjectDir)..\..\Graphical\inc\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)..\..\XeCore\inc\;$(ProjectDir)..\..\Graphical\inc\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)$(Platform)$(Configuration)\</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <VcpkgUseStatic>true</VcpkgUseStatic>
-    <VcpkgUseMD>true</VcpkgUseMD>
-  </PropertyGroup>
-  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <VcpkgUseStatic>true</VcpkgUseStatic>
-    <VcpkgUseMD>true</VcpkgUseMD>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,11 +118,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_PROJECT_PRIVATE_API;EXPORT_C_SHARP_API;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\ThirdParty\inc\;$(ProjectDir)..\..\XeCore\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\XeCore\inc\;$(ProjectDir)..\..\Graphical\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,12 +133,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_PROJECT_PRIVATE_API;EXPORT_C_SHARP_API;NDEBUG;_CONSOLE;USE_PROJECT_PRIVATE_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\ThirdParty\inc\;$(ProjectDir)..\..\XeCore\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <Optimization>MinSpace</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\XeCore\inc\;$(ProjectDir)..\..\Graphical\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,19 +144,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\XeCore\inc\xeApplication.h" />
-    <ClInclude Include="..\..\XeCore\inc\xeBaseDataType.h" />
-    <ClInclude Include="..\..\XeCore\inc\XeCoreClrOutput.h" />
-    <ClInclude Include="..\..\XeCore\inc\xeMmapFstream.h" />
-    <ClInclude Include="..\..\XeCore\inc\XeCore.hpp" />
-    <ClInclude Include="..\..\XeCore\inc\xeCoreConfig.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\XeCore\src\xeApplication.cpp" />
-    <ClCompile Include="..\..\XeCore\src\XeCoreClrOutput.cpp" />
-    <ClCompile Include="..\..\XeCore\src\xeMmapFstream.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
